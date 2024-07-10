@@ -10,9 +10,17 @@
   },
   "dependencies": {
     "@mantine/core": "7.11.1",
+    "@mantine/dates": "^7.11.1",
+    "@mantine/form": "^7.11.1",
     "@mantine/hooks": "7.11.1",
+    "@mantine/notifications": "^7.11.1",
     "@mantine/vanilla-extract": "7.11.1",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.44.3",
+    "@tabler/icons-react": "^3.9.0",
     "@vanilla-extract/css": "^1.15.3",
+    "dayjs": "^1.11.11",
     "next": "14.2.4",
     "react": "18.3.1",
     "react-dom": "18.3.1"
