@@ -142,7 +142,7 @@ const useProfile = (sb: SupabaseClient, userId: string) => {
     fetchProfile();
   }, []);
 
-  return { profile, error };
+  return { profile, error, fetchProfile };
 };
 
 export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient }) => {
@@ -150,7 +150,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
   const [sessId, setSessId] = useState<number | null>(null);
   const [profEd, setProfEd] = useState(false);
 
-  const { profile } = useProfile(sb, session.user.id);
+  const { profile, fetchProfile } = useProfile(sb, session.user.id);
   const { sessions, error } = useSessions(sb);
   const editedSession = sessions.find((s) => s.id === sessId);
 
@@ -221,6 +221,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
     if (error) {
       notifications.show({ title: "Error", message: error.message, color: "red", icon: <IconX /> });
     } else {
+      await fetchProfile();
       setProfEd(false);
     }
   };
