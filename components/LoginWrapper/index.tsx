@@ -25,9 +25,6 @@ export const LoginWrapper = () => {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
-      if (event === "SIGNED_IN" && session?.user.id) {
-        window.location.href = "/";
-      }
     });
 
     return () => subscription.unsubscribe();
