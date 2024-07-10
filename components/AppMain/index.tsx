@@ -351,7 +351,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
         </>
       ) : sessId === null ? (
         <>
-          <Title order={3}>Osogovo Con &apos;24</Title>
+          <Title order={3}>Осогово Con &apos;24</Title>
           <Group gap="xs">
             <Button
               size="xs"
@@ -370,9 +370,6 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
               Profile
             </Button>
           </Group>
-          <Text size="sm">
-            Create a game to let other people join, or join other people&apos;s games.
-          </Text>
           <Stack gap="sm">
             {sessions.map((sess) => (
               <Flex

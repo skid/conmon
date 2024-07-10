@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import { Session, createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
-import { ThemeMinimal } from "@supabase/auth-ui-shared";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { Stack, Text, Title } from "@mantine/core";
 import { AppMain } from "../AppMain";
 
@@ -33,11 +33,14 @@ export const LoginWrapper = () => {
   if (!session) {
     return (
       <Stack mx="auto" maw="600" px="lg" pt="lg">
-        <Title order={1}>Osogovo Con &apos;24</Title>
-        <Text size="sm">Login or signup to host or join games</Text>
+        <Title order={1}>Осогово Con &apos;24</Title>
+        <Text size="sm">
+          Направи група за играње или приклучи се кој некоја. Нема email потврда, така да памти си
+          го мејлот и пасвордот :)
+        </Text>
         <Auth
           supabaseClient={supabase}
-          appearance={{ theme: ThemeMinimal }}
+          appearance={{ theme: ThemeSupa }}
           providers={[]} // "apple", "github", "google", "twitter"
         />
       </Stack>

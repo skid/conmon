@@ -5,7 +5,7 @@ import { theme } from "../theme";
 import { Notifications } from "@mantine/notifications";
 
 export const metadata = {
-  title: "Osogovo '24",
+  title: "Осогово '24",
   description: "Boardgame Session Manager",
 };
 
