@@ -349,7 +349,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
         </>
       ) : sessId === null ? (
         <>
-          <Title order={1}>Osogovo Con &apos;24</Title>
+          <Title order={3}>Osogovo Con &apos;24</Title>
           <Group gap="xs">
             <Button
               size="xs"
@@ -368,6 +368,9 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
               Profile
             </Button>
           </Group>
+          <Text size="sm">
+            Create a game to let other people join, or join other people&apos;s games.
+          </Text>
           <Stack gap="sm">
             {sessions.map((sess) => (
               <Flex
@@ -471,18 +474,23 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
             />
             <Textarea
               label="Comment"
-              description="Any additional information?"
+              description="Other info: rules, location, etc."
               size="xs"
               {...sessionForm.getInputProps("comment")}
             />
             {editedSession && (
               <>
-                <Text my="sm">Players</Text>
+                <Text my="sm">
+                  Players ({editedSession.profiles.length}/{editedSession.player_count})
+                </Text>
+                <Flex gap="xs" align="center" mt="xs">
+                  <Text>You</Text>
+                </Flex>
                 {editedSession.profiles
                   .filter((p) => p.id !== editedSession.author_id)
                   .map((p) => {
                     return (
-                      <Flex key={p.id} gap="xs" align="center">
+                      <Flex key={p.id} gap="xs" align="center" mt="xs">
                         <Text>{p.username}</Text>
                         <Button
                           size="xs"
@@ -498,7 +506,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
                   })}
               </>
             )}
-            <Flex gap="sm" mt="md">
+            <Flex gap="sm" mt="md" pt="md" style={{ borderTop: "solid 1px #ccc" }}>
               {sessId === 0 ? (
                 <Button loading={loading} type="submit" rightSection={<IconCheck />} color="blue">
                   Create

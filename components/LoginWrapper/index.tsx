@@ -4,13 +4,13 @@
 import { useState, useEffect } from "react";
 import { Session, createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { ThemeMinimal } from "@supabase/auth-ui-shared";
 import { Stack, Text, Title } from "@mantine/core";
 import { AppMain } from "../AppMain";
 
 const supabase = createClient(
-  "https://lpwmuitdroismgidgwve.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxwd211aXRkcm9pc21naWRnd3ZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAzODQzMDEsImV4cCI6MjAzNTk2MDMwMX0.tK1BcVsjxWHL2n_wCGKNIt5TQ7xfNY6pbMw3QCQXIZI"
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
 export const LoginWrapper = () => {
@@ -40,8 +40,8 @@ export const LoginWrapper = () => {
         <Text size="sm">Login or signup to host or join games</Text>
         <Auth
           supabaseClient={supabase}
-          appearance={{ theme: ThemeSupa }}
-          providers={["apple", "github", "google", "twitter"]}
+          appearance={{ theme: ThemeMinimal }}
+          providers={[]} // "apple", "github", "google", "twitter"
         />
       </Stack>
     );
