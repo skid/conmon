@@ -219,7 +219,8 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
     setLoading(false);
 
     if (error) {
-      notifications.show({ title: "Error", message: error.message, color: "red", icon: <IconX /> });
+      const message = error.code === "23505" ? "Username already taken" : error.message;
+      notifications.show({ title: "Error", message, color: "red", icon: <IconX /> });
     } else {
       await fetchProfile();
       setProfEd(false);
@@ -393,9 +394,18 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
                   </b>
                   {" Players: "}
                   {sess.profiles.map((p) => (
-                    <span key={p.id} style={{ fontWeight: "bold" }}>
+                    <span
+                      key={p.id}
+                      style={{
+                        display: "block",
+                        fontWeight: "bold",
+                        color: p.id === session.user.id ? "green" : "black",
+                        margin: "0 5px",
+                      }}
+                    >
                       {p.username}
                       {p.id === sess.author_id ? " (host)" : ""}
+                      {p.id === session.user.id ? " (you)" : ""}
                       {", "}
                     </span>
                   ))}
