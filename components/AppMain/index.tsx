@@ -1,17 +1,7 @@
 import "@mantine/dates/styles.css";
 import "@mantine/notifications/styles.css";
 
-import {
-  Button,
-  Flex,
-  Group,
-  NumberInput,
-  Stack,
-  Text,
-  TextInput,
-  Textarea,
-  Title,
-} from "@mantine/core";
+import { Button, Flex, Group, NumberInput, Stack, Text, TextInput, Textarea, Title } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { Session, SupabaseClient } from "@supabase/supabase-js";
 import {
@@ -107,9 +97,7 @@ const useSessions = (sb: SupabaseClient) => {
  */
 const useProfile = (sb: SupabaseClient, userId: string) => {
   const [error, setError] = useState(null as string | null);
-  const [profile, setProfile] = useState(
-    null as null | { username: string; name: string; id?: number }
-  );
+  const [profile, setProfile] = useState(null as null | { username: string; name: string; id?: number });
 
   const fetchProfile = async () => {
     const { data, error } = await sb.from("profiles").select("*").filter("id", "eq", userId);
@@ -266,10 +254,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
       setProfEd(true);
     } else if (session_id) {
       const { error } = join
-        ? await sb
-            .from("sessions_profiles")
-            .upsert({ profile_id: session.user.id, session_id })
-            .select()
+        ? await sb.from("sessions_profiles").upsert({ profile_id: session.user.id, session_id }).select()
         : await sb
             .from("sessions_profiles")
             .delete()
@@ -326,13 +311,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
               {...profileForm.getInputProps("name")}
             />
             <Flex gap="sm" mt="sm">
-              <Button
-                size="xs"
-                loading={loading}
-                type="submit"
-                rightSection={<IconCheck />}
-                color="blue"
-              >
+              <Button size="xs" loading={loading} type="submit" rightSection={<IconCheck />} color="blue">
                 Update
               </Button>
               {!!profileForm.values.id && (
@@ -351,7 +330,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
         </>
       ) : sessId === null ? (
         <>
-          <Title order={3}>Осогово Con &apos;24</Title>
+          <Title order={3}>Осогово Con &apos;25</Title>
           <Group gap="xs">
             <Button
               size="xs"
@@ -360,13 +339,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
             >
               Host Game
             </Button>
-            <Button
-              size="xs"
-              ml="auto"
-              leftSection={<IconUser size={16} />}
-              color="blue"
-              onClick={changeProfile}
-            >
+            <Button size="xs" ml="auto" leftSection={<IconUser size={16} />} color="blue" onClick={changeProfile}>
               Profile
             </Button>
           </Group>

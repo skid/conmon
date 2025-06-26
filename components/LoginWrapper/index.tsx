@@ -8,10 +8,7 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { Stack, Text, Title } from "@mantine/core";
 import { AppMain } from "../AppMain";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);
 
 export const LoginWrapper = () => {
   const [session, setSession] = useState(null as Session | null);
@@ -33,10 +30,10 @@ export const LoginWrapper = () => {
   if (!session) {
     return (
       <Stack mx="auto" maw="600" px="lg" pt="lg">
-        <Title order={1}>Осогово Con &apos;24</Title>
+        <Title order={1}>Осогово Con &apos;25</Title>
         <Text size="sm">
-          Направи група за играње или приклучи се кој некоја. Нема email потврда, така да памти си
-          го мејлот и пасвордот :)
+          Направи група за играње или приклучи се кој некоја. Нема email потврда, така да памти си го мејлот и пасвордот
+          :)
         </Text>
         <Auth
           supabaseClient={supabase}
