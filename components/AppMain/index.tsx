@@ -296,6 +296,9 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
       {profEd ? (
         <>
           <Title order={1}>Your Profile</Title>
+          <Text size="sm" mb="sm">
+            Your email is {session.user.email}
+          </Text>
           <form onSubmit={profileForm.onSubmit(saveProfile)}>
             <TextInput
               label="Nickname"
@@ -373,7 +376,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
                         margin: "0 5px",
                       }}
                     >
-                      {p.username}
+                      {p.username} <small>({p.name})</small>
                       {p.id === sess.author_id ? " (host)" : ""}
                       {p.id === session.user.id ? " (you)" : ""}
                       {", "}
