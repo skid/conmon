@@ -367,7 +367,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
                   </b>
                   {" Players: "}
                   {sess.profiles.map((p) => (
-                    <span
+                    <div
                       key={p.id}
                       style={{
                         display: "block",
@@ -376,11 +376,11 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
                         margin: "0 5px",
                       }}
                     >
-                      {p.username} <small>({p.name})</small>
+                      {p.username}
                       {p.id === sess.author_id ? " (host)" : ""}
                       {p.id === session.user.id ? " (you)" : ""}
                       {", "}
-                    </span>
+                    </div>
                   ))}
                 </Text>
                 {sess.comment && (
