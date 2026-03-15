@@ -30,7 +30,7 @@ export const LoginWrapper = () => {
   if (!session) {
     return (
       <Stack mx="auto" maw="600" px="lg" pt="lg">
-        <Title order={1}>Осогово Con &apos;25</Title>
+        <Title order={1}>Осогово Con &apos;26</Title>
         <Text size="sm">
           Направи група за играње или приклучи се кој некоја. Нема email потврда, така да памти си го мејлот и пасвордот
           :)
