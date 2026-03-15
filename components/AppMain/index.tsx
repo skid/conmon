@@ -333,7 +333,7 @@ export const AppMain = ({ session, sb }: { session: Session; sb: SupabaseClient 
         </>
       ) : sessId === null ? (
         <>
-          <Title order={3}>Осогово Con &apos;25</Title>
+          <Title order={3}>Осогово Con &apos;26</Title>
           <Group gap="xs">
             <Button
               size="xs"
